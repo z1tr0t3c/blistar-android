@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">blistar</string>
+    <string name="title_vplan1">VPlan Schüler</string>
+    <string name="title_vplan2">VPlan Lehrer</string>
+    <string name="title_speis1">Speiseplan</string>
+    <string name="title_speis2">Vegetarisch</string>
+    <string name="title_vorschau1">Vorschau Schüler</string>
+    <string name="title_vorschau2">Vorschau Lehrer</string>
+    <string name="title_news">News</string>
+    <string name="title_termine">Termine</string>
+    <string name="title_ags">AGs und Freizeitangebote</string>
+    <string name="title_ank">Ankündigungen</string>
+    <string name="title_kalender">Kalender</string>
+    <string name="title_open">Öffnungszeiten</string>
+    <string name="title_katalog">Katalog</string>
+    <string name="title_edu">EDU-Dateiserver</string>
+    <string name="title_room">Raumbuchungen</string>
+    <string name="title_user">Benutzerverwaltung</string>
+    <string name="title_newsletter">Newsletter</string>
+    <string name="title_kontakt">Kontakt</string>
+    <string name="title_weg">Wegbeschreibung</string>
+    <string name="title_ferien">Ferienordnung</string>
+    <string name="title_terminplan">Terminplan</string>
+    <string name="title_about">Über diese App</string>
+    <string name="title_twitter">Neuigkeiten</string>
+</resources>

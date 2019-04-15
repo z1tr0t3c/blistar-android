@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/navigation_vorschau1"
+            android:icon="@drawable/ic_vplan1"
+            android:title="@string/title_vorschau1"/>
+
+    <item
+            android:id="@+id/navigation_vorschau2"
+            android:icon="@drawable/ic_vplan2"
+            android:title="@string/title_vorschau2"/>
+
+    <item
+            android:id="@+id/navigation_news"
+            android:icon="@drawable/ic_news"
+            android:title="@string/title_news"/>
+
+    <item
+            android:id="@+id/navigation_termine"
+            android:icon="@drawable/ic_termine"
+            android:title="@string/title_termine"/>
+
+    <item
+            android:id="@+id/navigation_ags"
+            android:icon="@drawable/ic_ags"
+            android:title="@string/title_ags"/>
+
+    <item
+            android:id="@+id/navigation_ank"
+            android:icon="@drawable/ic_ank"
+            android:title="@string/title_ank"/>
+
+    <item
+            android:id="@+id/navigation_kalender"
+            android:icon="@drawable/ic_kalender"
+            android:title="@string/title_kalender"/>
+
+    <item
+            android:id="@+id/navigation_open"
+            android:icon="@drawable/ic_open"
+            android:title="@string/title_open"/>
+
+    <item
+            android:id="@+id/navigation_katalog"
+            android:icon="@drawable/ic_katalog"
+            android:title="@string/title_katalog"/>
+
+    <item
+            android:id="@+id/navigation_edu"
+            android:icon="@drawable/ic_edu"
+            android:title="@string/title_edu"/>
+
+    <item
+            android:id="@+id/navigation_room"
+            android:icon="@drawable/ic_room"
+            android:title="@string/title_room"/>
+
+    <item
+            android:id="@+id/navigation_user"
+            android:icon="@drawable/ic_user"
+            android:title="@string/title_user"/>
+
+    <item
+            android:id="@+id/navigation_newsletter"
+            android:icon="@drawable/ic_newsletter"
+            android:title="@string/title_newsletter"/>
+
+    <item
+            android:id="@+id/navigation_kontakt"
+            android:icon="@drawable/ic_kontakt"
+            android:title="@string/title_kontakt"/>
+
+    <item
+            android:id="@+id/navigation_weg"
+            android:icon="@drawable/ic_weg"
+            android:title="@string/title_weg"/>
+
+    <item
+            android:id="@+id/navigation_ferien"
+            android:icon="@drawable/ic_ferien"
+            android:title="@string/title_ferien"/>
+
+    <item
+            android:id="@+id/navigation_terminplan"
+            android:icon="@drawable/ic_terminplan"
+            android:title="@string/title_terminplan"/>
+
+    <item
+            android:id="@+id/navigation_about"
+            android:icon="@drawable/ic_about"
+            android:title="@string/title_about"/>
+
+    <item
+            android:id="@+id/navigation_twitter"
+            android:icon="@drawable/ic_twitter"
+            android:title="@string/title_twitter"/>
+
+
+</menu>

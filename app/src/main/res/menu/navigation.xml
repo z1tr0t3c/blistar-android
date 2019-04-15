@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/navigation_vplan1"
+            android:icon="@drawable/ic_vplan1"
+            android:title="@string/title_vplan1"/>
+
+    <item
+            android:id="@+id/navigation_vplan2"
+            android:icon="@drawable/ic_vplan2"
+            android:title="@string/title_vplan2"/>
+
+    <item
+            android:id="@+id/navigation_speis1"
+            android:icon="@drawable/ic_speis1"
+            android:title="@string/title_speis1"/>
+    <item android:title="@string/title_speis2" android:id="@+id/navigation_speis2" android:icon="@drawable/ic_speis2"/>
+
+</menu>
