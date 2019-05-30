@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019 Falk Rismansanj. All rights reserved.
+ */
+
 package de.zitrotec.blistar
 
 import android.app.DownloadManager

@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "603983497657",
+    "firebase_url": "https://blistar.firebaseio.com",
+    "project_id": "blistar",
+    "storage_bucket": "blistar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:603983497657:android:4a6727da8287e970",
+        "android_client_info": {
+          "package_name": "de.zitrotec.blistar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcBRmdTwoDfLrBM4I8k_FUXDSuV4pK50w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "603983497657-qq6l79u5fj94mma0pngjmuqh7iqin3fc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

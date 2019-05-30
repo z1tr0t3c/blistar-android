@@ -1,3 +1,7 @@
+<!--
+  ~ Copyright (c) 2019 Falk Rismansanj. All rights reserved.
+  -->
+
 <resources>
     <string name="app_name">blistar</string>
     <string name="title_vplan1">VPlan Schüler</string>
