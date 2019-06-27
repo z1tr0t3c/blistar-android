@@ -86,6 +86,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle item selection
+
         return when (item.itemId) {
             R.id.navigation_vorschau1 -> {
                 val myWebView: WebView = findViewById(R.id.webview)
@@ -186,6 +187,14 @@ class MainActivity : AppCompatActivity() {
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
                 myWebView.loadUrl(url)
+                true
+            }
+            R.id.navigation_stundenplan -> {
+                val myWebView: WebView = findViewById(R.id.webview)
+                myWebView.settings.javaScriptEnabled = true
+                webview.webViewClient = WebViewClient()
+                Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
+                myWebView.loadUrl("https://zitrotec.de/stundenplan/display.php")
                 true
             }
             R.id.navigation_room -> {

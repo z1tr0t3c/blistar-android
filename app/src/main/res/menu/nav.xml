@@ -56,6 +56,11 @@
             android:title="@string/title_edu"/>
 
     <item
+            android:id="@+id/navigation_stundenplan"
+            android:icon="@drawable/ic_stundenplan"
+            android:title="@string/title_stundenplan"/>
+
+    <item
             android:id="@+id/navigation_room"
             android:icon="@drawable/ic_room"
             android:title="@string/title_room"/>
