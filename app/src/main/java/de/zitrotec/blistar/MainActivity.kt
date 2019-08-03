@@ -21,6 +21,10 @@ import android.webkit.WebViewClient
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import android.content.Intent
+import android.webkit.JsResult
+import android.webkit.WebChromeClient
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,6 +52,24 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
                 })
 
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
+
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_vplan2 -> {
@@ -56,6 +78,39 @@ class MainActivity : AppCompatActivity() {
                 myWebView.settings.javaScriptEnabled = true
                 webview.webViewClient = WebViewClient()
                 myWebView.loadUrl("https://edu.blista.de/moodle/mod/resource/view.php?id=41")
+
+                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
+                    val request = DownloadManager.Request(Uri.parse(url))
+                    request.setMimeType(mimeType)
+                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
+                    request.addRequestHeader("User-Agent", userAgent)
+                    request.setDescription("Downloading file...")
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
+                    request.allowScanningByMediaScanner()
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
+                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    dm.enqueue(request)
+                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
+                })
+
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
 
                 return@OnNavigationItemSelectedListener true
             }
@@ -67,6 +122,39 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
                 myWebView.loadUrl("https://www.blista.de/content/speiseplan#page-content")
 
+                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
+                    val request = DownloadManager.Request(Uri.parse(url))
+                    request.setMimeType(mimeType)
+                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
+                    request.addRequestHeader("User-Agent", userAgent)
+                    request.setDescription("Downloading file...")
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
+                    request.allowScanningByMediaScanner()
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
+                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    dm.enqueue(request)
+                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
+                })
+
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
+
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_speis2 -> {
@@ -76,6 +164,39 @@ class MainActivity : AppCompatActivity() {
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
                 myWebView.loadUrl("https://www.blista.de/speiseplan-vegetarisch#page-content")
+
+                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
+                    val request = DownloadManager.Request(Uri.parse(url))
+                    request.setMimeType(mimeType)
+                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
+                    request.addRequestHeader("User-Agent", userAgent)
+                    request.setDescription("Downloading file...")
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
+                    request.allowScanningByMediaScanner()
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
+                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    dm.enqueue(request)
+                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
+                })
+
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
 
                 return@OnNavigationItemSelectedListener true
             }
@@ -109,6 +230,24 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
                 })
 
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
+
                 true
             }
             R.id.navigation_vorschau2 -> {
@@ -116,6 +255,40 @@ class MainActivity : AppCompatActivity() {
                 myWebView.settings.javaScriptEnabled = true
                 webview.webViewClient = WebViewClient()
                 myWebView.loadUrl("https://edu.blista.de/moodle/mod/resource/view.php?id=45")
+
+                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
+                    val request = DownloadManager.Request(Uri.parse(url))
+                    request.setMimeType(mimeType)
+                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
+                    request.addRequestHeader("User-Agent", userAgent)
+                    request.setDescription("Downloading file...")
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
+                    request.allowScanningByMediaScanner()
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
+                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    dm.enqueue(request)
+                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
+                })
+
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
+
                 true
             }
             R.id.navigation_news -> {
@@ -124,6 +297,40 @@ class MainActivity : AppCompatActivity() {
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
                 myWebView.loadUrl("https://www.blista.de/aktuelles#page-content")
+
+                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
+                    val request = DownloadManager.Request(Uri.parse(url))
+                    request.setMimeType(mimeType)
+                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
+                    request.addRequestHeader("User-Agent", userAgent)
+                    request.setDescription("Downloading file...")
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
+                    request.allowScanningByMediaScanner()
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
+                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    dm.enqueue(request)
+                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
+                })
+
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
+
                 true
             }
             R.id.navigation_termine -> {
@@ -132,6 +339,40 @@ class MainActivity : AppCompatActivity() {
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
                 myWebView.loadUrl("https://www.blista.de/content/termine-0#page-content")
+
+                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
+                    val request = DownloadManager.Request(Uri.parse(url))
+                    request.setMimeType(mimeType)
+                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
+                    request.addRequestHeader("User-Agent", userAgent)
+                    request.setDescription("Downloading file...")
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
+                    request.allowScanningByMediaScanner()
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
+                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    dm.enqueue(request)
+                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
+                })
+
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
+
                 true
             }
             R.id.navigation_ags -> {
@@ -140,6 +381,40 @@ class MainActivity : AppCompatActivity() {
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
                 myWebView.loadUrl("https://www.blista.de/sport-und-freizeit-angebote#page-content")
+
+                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
+                    val request = DownloadManager.Request(Uri.parse(url))
+                    request.setMimeType(mimeType)
+                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
+                    request.addRequestHeader("User-Agent", userAgent)
+                    request.setDescription("Downloading file...")
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
+                    request.allowScanningByMediaScanner()
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
+                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    dm.enqueue(request)
+                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
+                })
+
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
+
                 true
             }
             R.id.navigation_ank -> {
@@ -148,6 +423,39 @@ class MainActivity : AppCompatActivity() {
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
                 myWebView.loadUrl("https://edu.blista.de/moodle/mod/forum/search.php?id=3&words&phrase&notwords&fullwords&timefromrestrict=1&fromday=1&frommonth=1&fromyear=2000&fromhour=0&fromminute=0&hfromday=0&hfrommonth=0&hfromyear=0&hfromhour=0&hfromminute=0&htoday=1&htomonth=1&htoyear=1&htohour=1&htominute=1&forumid&subject&user#maincontent")
+
+                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
+                    val request = DownloadManager.Request(Uri.parse(url))
+                    request.setMimeType(mimeType)
+                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
+                    request.addRequestHeader("User-Agent", userAgent)
+                    request.setDescription("Downloading file...")
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
+                    request.allowScanningByMediaScanner()
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
+                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    dm.enqueue(request)
+                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
+                })
+
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
                 true
             }
             R.id.navigation_kalender -> {
@@ -156,6 +464,40 @@ class MainActivity : AppCompatActivity() {
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
                 myWebView.loadUrl("https://edu.blista.de/moodle/calendar/view.php?view=upcoming#maincontent")
+
+                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
+                    val request = DownloadManager.Request(Uri.parse(url))
+                    request.setMimeType(mimeType)
+                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
+                    request.addRequestHeader("User-Agent", userAgent)
+                    request.setDescription("Downloading file...")
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
+                    request.allowScanningByMediaScanner()
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
+                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    dm.enqueue(request)
+                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
+                })
+
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
+
                 true
             }
             R.id.navigation_open -> {
@@ -164,29 +506,124 @@ class MainActivity : AppCompatActivity() {
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
                 myWebView.loadUrl("https://zitrotec.de/blista-android/opening.html")
+
+                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
+                    val request = DownloadManager.Request(Uri.parse(url))
+                    request.setMimeType(mimeType)
+                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
+                    request.addRequestHeader("User-Agent", userAgent)
+                    request.setDescription("Downloading file...")
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
+                    request.allowScanningByMediaScanner()
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
+                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    dm.enqueue(request)
+                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
+                })
+
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
+
                 true
             }
             R.id.navigation_katalog -> {
-                val myWebView: WebView = findViewById(R.id.webview)
-                myWebView.settings.javaScriptEnabled = true
-                myWebView.settings.mediaPlaybackRequiresUserGesture = false
-                webview.webViewClient = WebViewClient()
+                    val myWebView: WebView = findViewById(R.id.webview)
+                    myWebView.settings.javaScriptEnabled = true
+                    myWebView.settings.mediaPlaybackRequiresUserGesture = false
+                    webview.webViewClient = WebViewClient()
+                myWebView.webChromeClient = WebChromeClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
-                myWebView.loadUrl("https://katalog.blista.de/allegro")
-                if (myWebView.url.contains("dls-katalog")) {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(myWebView.url))
-                    startActivity(intent)
-                }
+                    myWebView.loadUrl("https://katalog.blista.de/allegro")
+                    if (myWebView.url.contains("dls-katalog")) {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(myWebView.url))
+                        startActivity(intent)
+                    }
+
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+
+                    }
+
+                })
+
                 true
             }
             R.id.navigation_edu -> {
-                val myPdfUrl = "https://zitrotec.de/blista-android/intranet.pdf"
-                val url = "https://docs.google.com/gview?embedded=true&url=$myPdfUrl"
+                val url = "https://edu.blista.de/webfolders"
                 val myWebView: WebView = findViewById(R.id.webview)
                 myWebView.settings.javaScriptEnabled = true
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
                 myWebView.loadUrl(url)
+
+                myWebView.setWebChromeClient(object : WebChromeClient() {
+                    override fun onJsAlert(view: WebView, url: String, message: String, result: JsResult): Boolean {
+                        return super.onJsAlert(view, url, message, result)
+                    }
+                })
+
+                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
+                    val request = DownloadManager.Request(Uri.parse(url))
+                    request.setMimeType(mimeType)
+                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
+                    request.addRequestHeader("User-Agent", userAgent)
+                    request.setDescription("Downloading file...")
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
+                    request.allowScanningByMediaScanner()
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
+                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    dm.enqueue(request)
+                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
+                })
+
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
+
                 true
             }
             R.id.navigation_stundenplan -> {
@@ -195,6 +632,40 @@ class MainActivity : AppCompatActivity() {
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
                 myWebView.loadUrl("https://zitrotec.de/stundenplan/display.php")
+
+                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
+                    val request = DownloadManager.Request(Uri.parse(url))
+                    request.setMimeType(mimeType)
+                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
+                    request.addRequestHeader("User-Agent", userAgent)
+                    request.setDescription("Downloading file...")
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
+                    request.allowScanningByMediaScanner()
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
+                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    dm.enqueue(request)
+                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
+                })
+
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
+
                 true
             }
             R.id.navigation_room -> {
@@ -203,6 +674,40 @@ class MainActivity : AppCompatActivity() {
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
                 myWebView.loadUrl("https://edu.blista.de/moodle/blocks/mrbs/web/index.php#maincontent")
+
+                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
+                    val request = DownloadManager.Request(Uri.parse(url))
+                    request.setMimeType(mimeType)
+                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
+                    request.addRequestHeader("User-Agent", userAgent)
+                    request.setDescription("Downloading file...")
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
+                    request.allowScanningByMediaScanner()
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
+                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    dm.enqueue(request)
+                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
+                })
+
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
+
                 true
             }
             R.id.navigation_user -> {
@@ -211,6 +716,40 @@ class MainActivity : AppCompatActivity() {
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
                 myWebView.loadUrl("https://edu.blista.de/ldapPortal")
+
+                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
+                    val request = DownloadManager.Request(Uri.parse(url))
+                    request.setMimeType(mimeType)
+                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
+                    request.addRequestHeader("User-Agent", userAgent)
+                    request.setDescription("Downloading file...")
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
+                    request.allowScanningByMediaScanner()
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
+                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    dm.enqueue(request)
+                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
+                })
+
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
+
                 true
             }
             R.id.navigation_newsletter -> {
@@ -219,6 +758,40 @@ class MainActivity : AppCompatActivity() {
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
                 myWebView.loadUrl("https://www.blista.de/content/newsletter#page-content")
+
+                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
+                    val request = DownloadManager.Request(Uri.parse(url))
+                    request.setMimeType(mimeType)
+                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
+                    request.addRequestHeader("User-Agent", userAgent)
+                    request.setDescription("Downloading file...")
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
+                    request.allowScanningByMediaScanner()
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
+                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    dm.enqueue(request)
+                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
+                })
+
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
+
                 true
             }
             R.id.navigation_kontakt -> {
@@ -227,6 +800,40 @@ class MainActivity : AppCompatActivity() {
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
                 myWebView.loadUrl("https://www.blista.de/kontakt#page-content")
+
+                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
+                    val request = DownloadManager.Request(Uri.parse(url))
+                    request.setMimeType(mimeType)
+                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
+                    request.addRequestHeader("User-Agent", userAgent)
+                    request.setDescription("Downloading file...")
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
+                    request.allowScanningByMediaScanner()
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
+                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    dm.enqueue(request)
+                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
+                })
+
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
+
                 true
             }
             R.id.navigation_weg -> {
@@ -237,6 +844,40 @@ class MainActivity : AppCompatActivity() {
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
                 myWebView.loadUrl(url)
+
+                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
+                    val request = DownloadManager.Request(Uri.parse(url))
+                    request.setMimeType(mimeType)
+                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
+                    request.addRequestHeader("User-Agent", userAgent)
+                    request.setDescription("Downloading file...")
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
+                    request.allowScanningByMediaScanner()
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
+                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    dm.enqueue(request)
+                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
+                })
+
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
+
                 true
             }
 
@@ -248,6 +889,40 @@ class MainActivity : AppCompatActivity() {
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
                 myWebView.loadUrl(url)
+
+                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
+                    val request = DownloadManager.Request(Uri.parse(url))
+                    request.setMimeType(mimeType)
+                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
+                    request.addRequestHeader("User-Agent", userAgent)
+                    request.setDescription("Downloading file...")
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
+                    request.allowScanningByMediaScanner()
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
+                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    dm.enqueue(request)
+                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
+                })
+
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
+
                 true
             }
 
@@ -259,6 +934,40 @@ class MainActivity : AppCompatActivity() {
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
                 myWebView.loadUrl(url)
+
+                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
+                    val request = DownloadManager.Request(Uri.parse(url))
+                    request.setMimeType(mimeType)
+                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
+                    request.addRequestHeader("User-Agent", userAgent)
+                    request.setDescription("Downloading file...")
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
+                    request.allowScanningByMediaScanner()
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
+                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    dm.enqueue(request)
+                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
+                })
+
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
+
                 true
             }
 
@@ -273,6 +982,45 @@ class MainActivity : AppCompatActivity() {
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
                 myWebView.loadUrl("https://zitrotec.de/blista-android")
+
+                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
+                    val request = DownloadManager.Request(Uri.parse(url))
+                    request.setMimeType(mimeType)
+                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
+                    request.addRequestHeader("User-Agent", userAgent)
+                    request.setDescription("Downloading file...")
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
+                    request.allowScanningByMediaScanner()
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
+                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    dm.enqueue(request)
+                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
+                })
+
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("sms:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
+
                 true
             }
 
@@ -282,6 +1030,40 @@ class MainActivity : AppCompatActivity() {
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
                 myWebView.loadUrl("https://twitter.com/blistarapp")
+
+                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
+                    val request = DownloadManager.Request(Uri.parse(url))
+                    request.setMimeType(mimeType)
+                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
+                    request.addRequestHeader("User-Agent", userAgent)
+                    request.setDescription("Downloading file...")
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
+                    request.allowScanningByMediaScanner()
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
+                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    dm.enqueue(request)
+                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
+                })
+
+                myWebView.setWebViewClient(object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
+                        if (url != null && url.startsWith("mailto:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("tel:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                })
+
                 true
             }
 
