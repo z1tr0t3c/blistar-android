@@ -1058,6 +1058,16 @@ class MainActivity : AppCompatActivity() {
                                 Intent(Intent.ACTION_VIEW, Uri.parse(url))
                             )
                             return true
+                        } else if (url != null && url.startsWith("market:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("amzn:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
                         } else {
                             return false
                         }
