@@ -1029,7 +1029,7 @@ class MainActivity : AppCompatActivity() {
                 myWebView.settings.javaScriptEnabled = true
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
-                myWebView.loadUrl("https://twitter.com/blistarapp")
+                myWebView.loadUrl("https://mobile.twitter.com/blistarapp")
 
                 webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
                     val request = DownloadManager.Request(Uri.parse(url))
