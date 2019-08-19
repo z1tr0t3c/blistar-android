@@ -983,6 +983,12 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
                 myWebView.loadUrl("https://zitrotec.de/blista-android")
 
+                myWebView.setWebChromeClient(object : WebChromeClient() {
+                    override fun onJsAlert(view: WebView, url: String, message: String, result: JsResult): Boolean {
+                        return super.onJsAlert(view, url, message, result)
+                    }
+                })
+
                 webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
                     val request = DownloadManager.Request(Uri.parse(url))
                     request.setMimeType(mimeType)
@@ -1015,7 +1021,18 @@ class MainActivity : AppCompatActivity() {
                                 Intent(Intent.ACTION_VIEW, Uri.parse(url))
                             )
                             return true
-                        } else {
+                        } else if (url != null && url.startsWith("market:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        } else if (url != null && url.startsWith("amzn:")) {
+                            view.context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                            )
+                            return true
+                        }
+                        else {
                             return false
                         }
                     }
@@ -1054,16 +1071,6 @@ class MainActivity : AppCompatActivity() {
                             )
                             return true
                         } else if (url != null && url.startsWith("tel:")) {
-                            view.context.startActivity(
-                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                            )
-                            return true
-                        } else if (url != null && url.startsWith("market:")) {
-                            view.context.startActivity(
-                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                            )
-                            return true
-                        } else if (url != null && url.startsWith("amzn:")) {
                             view.context.startActivity(
                                 Intent(Intent.ACTION_VIEW, Uri.parse(url))
                             )
