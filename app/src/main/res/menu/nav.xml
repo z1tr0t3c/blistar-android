@@ -61,6 +61,11 @@
             android:title="@string/title_stundenplan"/>
 
     <item
+        android:id="@+id/navigation_essen"
+        android:icon="@drawable/ic_essen"
+        android:title="@string/title_essen"/>
+
+    <item
             android:id="@+id/navigation_room"
             android:icon="@drawable/ic_room"
             android:title="@string/title_room"/>

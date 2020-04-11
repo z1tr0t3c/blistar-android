@@ -28,4 +28,6 @@
     <string name="title_about">Über diese App</string>
     <string name="title_twitter">Neuigkeiten</string>
     <string name="title_stundenplan">Stundenplan</string>
+    <string name="title_essen">Essen bestellen/einchecken</string>
+
 </resources>
