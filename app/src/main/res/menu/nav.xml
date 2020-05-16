@@ -6,6 +6,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/navigation_corona"
+        android:icon="@drawable/ic_corona"
+        android:title="@string/title_corona"/>
+
+    <item
             android:id="@+id/navigation_vorschau1"
             android:icon="@drawable/ic_vplan1"
             android:title="@string/title_vorschau1"/>
