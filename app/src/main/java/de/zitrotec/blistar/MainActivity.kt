@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
                 val myWebView: WebView = findViewById(R.id.webview)
                 myWebView.settings.javaScriptEnabled = true
                 webview.webViewClient = WebViewClient()
-                myWebView.loadUrl("https://edu.blista.de/moodle/mod/resource/view.php?id=39")
+                myWebView.loadUrl("https://css.moodle.blista.study/mod/resource/view.php?id=39")
 
                 webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
                     val request = DownloadManager.Request(Uri.parse(url))
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                 val myWebView: WebView = findViewById(R.id.webview)
                 myWebView.settings.javaScriptEnabled = true
                 webview.webViewClient = WebViewClient()
-                myWebView.loadUrl("https://edu.blista.de/moodle/mod/resource/view.php?id=41")
+                myWebView.loadUrl("https://css.moodle.blista.study/mod/resource/view.php?id=41")
 
                 webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
                     val request = DownloadManager.Request(Uri.parse(url))
@@ -208,7 +208,7 @@ class MainActivity : AppCompatActivity() {
                 val myWebView: WebView = findViewById(R.id.webview)
                 myWebView.settings.javaScriptEnabled = true
                 webview.webViewClient = WebViewClient()
-                myWebView.loadUrl("https://edu.blista.de/moodle/mod/resource/view.php?id=43")
+                myWebView.loadUrl("https://css.moodle.blista.study/mod/resource/view.php?id=43")
 
                 webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
                     val request = DownloadManager.Request(Uri.parse(url))
@@ -249,7 +249,7 @@ class MainActivity : AppCompatActivity() {
                 val myWebView: WebView = findViewById(R.id.webview)
                 myWebView.settings.javaScriptEnabled = true
                 webview.webViewClient = WebViewClient()
-                myWebView.loadUrl("https://edu.blista.de/moodle/mod/resource/view.php?id=45")
+                myWebView.loadUrl("https://css.moodle.blista.study/mod/resource/view.php?id=45")
 
                 webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
                     val request = DownloadManager.Request(Uri.parse(url))
@@ -417,7 +417,7 @@ class MainActivity : AppCompatActivity() {
                 myWebView.settings.javaScriptEnabled = true
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
-                myWebView.loadUrl("https://edu.blista.de/moodle/mod/forum/search.php?id=3&words&phrase&notwords&fullwords&timefromrestrict=1&fromday=1&frommonth=1&fromyear=2000&fromhour=0&fromminute=0&hfromday=0&hfrommonth=0&hfromyear=0&hfromhour=0&hfromminute=0&htoday=1&htomonth=1&htoyear=1&htohour=1&htominute=1&forumid&subject&user#maincontent")
+                myWebView.loadUrl("https://css.moodle.blista.study/mod/forum/search.php?id=3&words&phrase&notwords&fullwords&timefromrestrict=1&fromday=1&frommonth=1&fromyear=2000&fromhour=0&fromminute=0&hfromday=0&hfrommonth=0&hfromyear=0&hfromhour=0&hfromminute=0&htoday=1&htomonth=1&htoyear=1&htohour=1&htominute=1&forumid&subject&user#maincontent")
 
                 webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
                     val request = DownloadManager.Request(Uri.parse(url))
@@ -458,7 +458,7 @@ class MainActivity : AppCompatActivity() {
                 myWebView.settings.javaScriptEnabled = true
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
-                myWebView.loadUrl("https://edu.blista.de/moodle/calendar/view.php?view=upcoming#maincontent")
+                myWebView.loadUrl("https://css.moodle.blista.study/calendar/view.php?view=upcoming#maincontent")
 
                 webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
                     val request = DownloadManager.Request(Uri.parse(url))
@@ -668,7 +668,7 @@ class MainActivity : AppCompatActivity() {
                 myWebView.settings.javaScriptEnabled = true
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
-                myWebView.loadUrl("https://edu.blista.de/moodle/blocks/mrbs/web/index.php#maincontent")
+                myWebView.loadUrl("https://css.moodle.blista.study/blocks/mrbs/web/index.php#maincontent")
 
                 webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
                     val request = DownloadManager.Request(Uri.parse(url))
@@ -752,7 +752,7 @@ class MainActivity : AppCompatActivity() {
                 myWebView.settings.javaScriptEnabled = true
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
-                myWebView.loadUrl("https://www.blista.de/newsletter#page-content")
+                myWebView.loadUrl("https://www.blista.de/ihr-weg-zu-uns#Ko")
 
                 webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
                     val request = DownloadManager.Request(Uri.parse(url))
