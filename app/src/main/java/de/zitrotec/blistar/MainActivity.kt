@@ -544,8 +544,8 @@ class MainActivity : AppCompatActivity() {
                     webview.webViewClient = WebViewClient()
                 myWebView.webChromeClient = WebChromeClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
-                    myWebView.loadUrl("https://katalog.blista.de/allegro")
-                    if (myWebView.url.contains("dls-katalog")) {
+                    myWebView.loadUrl("https://katalog.blista.de/")
+                    if (myWebView.url.contains("blibu-katalog")) {
                         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(myWebView.url))
                         startActivity(intent)
                     }
