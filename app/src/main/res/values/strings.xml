@@ -28,7 +28,7 @@
     <string name="title_about">Über diese App</string>
     <string name="title_twitter">Neuigkeiten</string>
     <string name="title_stundenplan">Stundenplan</string>
-    <string name="title_essen">Essen bestellen/einchecken</string>
+    <string name="title_meet">blistaMeet</string>
     <string name="title_corona">Corona-Infos</string>
 
 </resources>

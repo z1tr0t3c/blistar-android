@@ -1079,53 +1079,11 @@ class MainActivity : AppCompatActivity() {
                 true
             }
 
-            R.id.navigation_essen -> {
+            R.id.navigation_meet -> {
 
-                val myWebView: WebView = findViewById(R.id.webview)
-                myWebView.settings.javaScriptEnabled = true
-                webview.webViewClient = WebViewClient()
-                webview.webChromeClient = object : WebChromeClient() {
-                    override fun onPermissionRequest(request: PermissionRequest) {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                            request.grant(request.resources)
-                        }
-                    }
-                }
-                Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
-                myWebView.loadUrl("https://zitrotec.de/blista-android/switch.html")
-
-                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
-                    val request = DownloadManager.Request(Uri.parse(url))
-                    request.setMimeType(mimeType)
-                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
-                    request.addRequestHeader("User-Agent", userAgent)
-                    request.setDescription("Downloading file...")
-                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
-                    request.allowScanningByMediaScanner()
-                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
-                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-                    dm.enqueue(request)
-                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
-                })
-
-                myWebView.setWebViewClient(object : WebViewClient() {
-                    override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
-                        if (url != null && url.startsWith("mailto:")) {
-                            view.context.startActivity(
-                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                            )
-                            return true
-                        } else if (url != null && url.startsWith("tel:")) {
-                            view.context.startActivity(
-                                Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                            )
-                            return true
-                        } else {
-                            return false
-                        }
-                    }
-                })
+                val openURL = Intent(android.content.Intent.ACTION_VIEW)
+                openURL.data = Uri.parse("https://zitrotec.de/blista/meet.html")
+                startActivity(openURL)
 
                 true
             }
