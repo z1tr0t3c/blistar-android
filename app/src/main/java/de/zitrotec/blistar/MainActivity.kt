@@ -545,10 +545,21 @@ class MainActivity : AppCompatActivity() {
                 myWebView.webChromeClient = WebChromeClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
                     myWebView.loadUrl("https://katalog.blista.de/")
-                    if (myWebView.url.contains("blibu-katalog")) {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(myWebView.url))
-                        startActivity(intent)
-                    }
+
+                webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
+                    val request = DownloadManager.Request(Uri.parse(url))
+                    request.setMimeType(mimeType)
+                    request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url))
+                    request.addRequestHeader("User-Agent", userAgent)
+                    request.setDescription("Downloading file...")
+                    request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType))
+                    request.allowScanningByMediaScanner()
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                    request.setDestinationInExternalFilesDir(this@MainActivity, Environment.DIRECTORY_DOWNLOADS, ".png")
+                    val dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                    dm.enqueue(request)
+                    Toast.makeText(applicationContext, "Lade Datei...", Toast.LENGTH_LONG).show()
+                })
 
                 myWebView.setWebViewClient(object : WebViewClient() {
                     override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
