@@ -18,8 +18,8 @@ android {
         applicationId "de.zitrotec.blistar"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 12
-        versionName "1.8.1"
+        versionCode 13
+        versionName "1.8.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

@@ -115,7 +115,7 @@ class MainActivity : AppCompatActivity() {
                 myWebView.settings.javaScriptEnabled = true
                 webview.webViewClient = WebViewClient()
                 Toast.makeText(applicationContext, "Lade Seite...", Toast.LENGTH_LONG).show()
-                myWebView.loadUrl("https://www.blista.de/content/speiseplan#page-content")
+                myWebView.loadUrl("https://www.blista.de/Speiseplan-der-Mensa#page-content")
 
                 webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
                     val request = DownloadManager.Request(Uri.parse(url))
@@ -981,7 +981,8 @@ class MainActivity : AppCompatActivity() {
 
                 val pinfo = packageManager.getPackageInfo(packageName, 0)
                 val versionName = pinfo.versionName
-                val MyUA = "blistar/" + versionName
+                val versionNum = pinfo.versionCode
+                val MyUA = "blistar/" + versionName + "(" + versionNum + ")"
                 val myWebView: WebView = findViewById(R.id.webview)
                 myWebView.settings.javaScriptEnabled = true
                 myWebView.getSettings().setUserAgentString(MyUA)
