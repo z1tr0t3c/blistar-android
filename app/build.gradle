@@ -13,13 +13,13 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'io.fabric'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     defaultConfig {
         applicationId "de.zitrotec.blistar"
         minSdkVersion 19
-        targetSdkVersion 29
-        versionCode 13
-        versionName "1.8.2"
+        targetSdkVersion 30
+        versionCode 14
+        versionName "1.8.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
                 val myWebView: WebView = findViewById(R.id.webview)
                 myWebView.settings.javaScriptEnabled = true
                 webview.webViewClient = WebViewClient()
-                myWebView.loadUrl("https://css.moodle.blista.study/mod/resource/view.php?id=39")
+                myWebView.loadUrl("https://css.moodle.blista.study/mod/resource/view.php?id=4526")
 
                 webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
                     val request = DownloadManager.Request(Uri.parse(url))
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                 val myWebView: WebView = findViewById(R.id.webview)
                 myWebView.settings.javaScriptEnabled = true
                 webview.webViewClient = WebViewClient()
-                myWebView.loadUrl("https://css.moodle.blista.study/mod/resource/view.php?id=41")
+                myWebView.loadUrl("https://css.moodle.blista.study/mod/resource/view.php?id=4525")
 
                 webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
                     val request = DownloadManager.Request(Uri.parse(url))
@@ -208,7 +208,7 @@ class MainActivity : AppCompatActivity() {
                 val myWebView: WebView = findViewById(R.id.webview)
                 myWebView.settings.javaScriptEnabled = true
                 webview.webViewClient = WebViewClient()
-                myWebView.loadUrl("https://css.moodle.blista.study/mod/resource/view.php?id=43")
+                myWebView.loadUrl("https://css.moodle.blista.study/mod/resource/view.php?id=4527")
 
                 webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
                     val request = DownloadManager.Request(Uri.parse(url))
@@ -249,7 +249,7 @@ class MainActivity : AppCompatActivity() {
                 val myWebView: WebView = findViewById(R.id.webview)
                 myWebView.settings.javaScriptEnabled = true
                 webview.webViewClient = WebViewClient()
-                myWebView.loadUrl("https://css.moodle.blista.study/mod/resource/view.php?id=45")
+                myWebView.loadUrl("https://css.moodle.blista.study/mod/resource/view.php?id=4528")
 
                 webview.setDownloadListener({ url, userAgent, contentDisposition, mimeType, contentLength ->
                     val request = DownloadManager.Request(Uri.parse(url))
